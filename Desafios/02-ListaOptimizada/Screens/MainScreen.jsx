@@ -37,9 +37,8 @@ const MainScreen = () => {
         completed: status,
       },
     ]);
+    setModalVisible(false)
   };
-
-  console.log (tasks);
   
   return (
     <View style={styles.container}>
@@ -70,4 +69,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
   },
+  taskListContainer: {
+    alignItems:"center",
+    justifyContent: "center",
+    backgroundColor: "yellow",
+    height: 400,
+  }
 });

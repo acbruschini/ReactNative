@@ -22,8 +22,9 @@ export default Header;
 
 const styles = StyleSheet.create({
   container: {
+    height: 50,
     width: "100%",
-    backgroundColor: "red",
+    backgroundColor: "#a9a9a9",
     padding: 10,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   addButton: {
-    backgroundColor: "blue",
+    backgroundColor: "#808080",
     padding: 5,
     alignItems: "center",
     height: "100%",
