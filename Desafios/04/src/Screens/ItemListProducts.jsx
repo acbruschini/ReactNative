@@ -4,15 +4,24 @@ import ProductsRaw from "../Assets/products.json";
 import ItemProduct from "../Components/ItemProduct";
 
 const ItemListProducts = ({ navigation, route }) => {
-  const { category } = route.params;
+  const { category, searchKey } = route.params;
   const [productsList, setProductsList] = useState([]);
+  const [keyword, setKeyword] = useState(searchKey? searchKey : "")
 
   useEffect(() => {
-    const productsFiltered = ProductsRaw.filter(
-      (product) => product.category === category
-    );
+    setKeyword(searchKey? searchKey : "");
+    let productsFiltered = []
+    if (category) {
+      productsFiltered = ProductsRaw.filter(
+        (product) => product.category === category
+      );
+    } else {
+      productsFiltered = ProductsRaw.filter(
+        (product) => product.title.toLocaleLowerCase().includes(keyword.toLowerCase())
+      );
+    }
     setProductsList(productsFiltered);
-  }, [category]);
+  }, [category, keyword, searchKey]);
 
   return (
     <View>
@@ -23,7 +32,7 @@ const ItemListProducts = ({ navigation, route }) => {
           <ItemProduct product={item} navigation={navigation} />
         }
       />
-      <Text>Products {category}</Text>
+      {/* <Text>Products {category}</Text> */}
     </View>
   );
 };

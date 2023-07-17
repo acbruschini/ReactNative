@@ -5,7 +5,6 @@ import ItemCategory from "../Components/ItemCategory";
 
 const ItemListCategories = ({navigation}) => {
 
-
   return (
     <View>
       <FlatList
