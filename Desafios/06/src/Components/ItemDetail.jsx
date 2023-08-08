@@ -1,28 +1,24 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Button, Image, StyleSheet, Text, View } from "react-native";
 import { useEffect, useState } from "react";
 import { generalContentPadding } from "../Global/dimensions";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "../Features/Cart/cartSlice";
 
 const ItemDetail = () => {
   const idSelected = useSelector((state) => state.shopReducer.value.idSelected);
   const allProducts = useSelector((state) => state.shopReducer.value.allProducts);
-  //const [product, setProduct] = useState("");
-
-  console.log("ID " + idSelected); // LOGUEA BIENd
-  console.log(allProducts); // LOGUEA BIEN
-
-  // useEffect(() => {
-  //   console.log("TEST") // JAMAS SE VE
-  //   if (idSelected) {
-  //     const findedProduct = allProducts.find((product) => product.id == idSelected);
-  //     console.log("FINDED PRODUCT" + findedProduct); // JAMAS SE VE
-  //     setProduct(findedProduct);
-  //   } else {
-  //     return null;
-  //   }
-  // }, [idSelected]);
 
   const product = allProducts.find((product) => product.id == idSelected);
+
+  const dispatch = useDispatch()
+  
+  const onAdd = () => {
+    dispatch(addItem({
+      ...product,
+      quantity: 1
+    }))
+
+  }
 
   return (
     <View style={styles.container}>
@@ -35,6 +31,7 @@ const ItemDetail = () => {
       <Text>{product.title}</Text>
       <Text>{product.description}</Text>
       <Text>${product.price}</Text>
+      <Button title="Add to cart" onPress={onAdd}></Button>
     </View>
   );
 };
