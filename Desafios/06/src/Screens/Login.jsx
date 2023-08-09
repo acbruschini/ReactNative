@@ -15,7 +15,6 @@ const LoginScreen = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [errorEmail, setErrorEmail] = useState("")
   const [errorPassword, setErrorPassword] = useState("")
-  //const [triggerGetImage, resultGetImage] = useGetProfileImageQuery()
 
   const [trigger, result] = useLoginMutation();
 
@@ -41,6 +40,7 @@ useEffect(() => {
     dispatch(setUser({email: result.data.email, idToken: result.data.idToken, localId: result.data.localId, profileImage: ""}))
   }
 }, [result])
+
 
 
   return (

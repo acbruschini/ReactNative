@@ -1,12 +1,13 @@
 import { Image, StyleSheet, View } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AddButton from "../Components/AddButton";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useGetProfileImageQuery } from "../Services/shopServices";
+import { setUser } from "../Features/User/userSlice";
 
 const Profile = ({navigation}) => {
-
-    const {localId, profileImage} = useSelector(state => state.userReducer.value)
+    const dispatch = useDispatch()
+    const {localId, profileImage, idToken, email} = useSelector(state => state.userReducer.value)
     const estado = useSelector(state => state.userReducer.value)
 
     console.log("ESTADO TOTAL USERrEDUCER =>")
@@ -30,6 +31,12 @@ const Profile = ({navigation}) => {
     const launchCamera = async () => {
         navigation.navigate('Image Selector')
     };
+
+    useEffect(() => {
+        if(image) {
+          dispatch(setUser({email, idToken, localId, profileImage: image.image}))
+        }
+      }, [image])
 
     return (
         <View style={styles.container}>
