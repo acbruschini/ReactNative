@@ -13,6 +13,8 @@ import TabBarCartIcon from "../Components/TabBarCartIcon";
 import TabBarOrdersIcon from "../Components/TabBarOrdersIcon";
 import AuthStack from "./AuthStack";
 import { useSelector } from "react-redux";
+import ProfileStack from "./ProfileStack";
+import TabBarMyProfileIcon from "../Components/TabBarMyProfileIcon";
 
 const Tab = createBottomTabNavigator();
 
@@ -50,6 +52,13 @@ const Navigator = () => {
               component={OrdersStack}
               options={{
                 tabBarIcon: TabBarOrdersIcon,
+              }}
+            />
+            <Tab.Screen
+              name="MyProfile"
+              component={ProfileStack}
+              options={{
+                tabBarIcon: TabBarMyProfileIcon,
               }}
             />
           </Tab.Navigator>

@@ -6,6 +6,7 @@ import { useLoginMutation } from "../Services/authServices";
 import { isAtLeastSixCharacters, isValidEmail } from "../Validations/auth";
 import { useDispatch } from "react-redux";
 import { setUser } from "../Features/User/userSlice";
+import { useGetProfileImageQuery } from "../Services/shopServices";
 
 //import { colors } from '../Global/Colors'
 
@@ -14,6 +15,7 @@ const LoginScreen = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [errorEmail, setErrorEmail] = useState("")
   const [errorPassword, setErrorPassword] = useState("")
+  //const [triggerGetImage, resultGetImage] = useGetProfileImageQuery()
 
   const [trigger, result] = useLoginMutation();
 
@@ -36,7 +38,7 @@ const LoginScreen = ({ navigation }) => {
 
 useEffect(() => {
   if(result.isSuccess) {
-    dispatch(setUser({email: result.data.email, idToken: result.data.idToken}))
+    dispatch(setUser({email: result.data.email, idToken: result.data.idToken, localId: result.data.localId, profileImage: ""}))
   }
 }, [result])
 
