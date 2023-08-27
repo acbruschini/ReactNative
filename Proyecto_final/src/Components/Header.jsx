@@ -4,6 +4,7 @@ import { generalContentPadding } from "../Global/dimensions.js";
 import Search from "./Search.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../Features/User/userSlice.js";
+import { cartLogOut } from "../Features/Cart/cartSlice.js";
 import { deleteSession } from "../SQL_lite/queries.js";
 
 const Header = ({ navigation, title }) => {
@@ -15,6 +16,7 @@ const Header = ({ navigation, title }) => {
       const res = await deleteSession(localId)
       console.log(res)
       dispatch(logOut())
+      dispatch(cartLogOut())
     } catch (error) {
       console.log(error.message)
     }

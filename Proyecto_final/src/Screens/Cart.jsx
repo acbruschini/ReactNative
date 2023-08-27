@@ -1,10 +1,9 @@
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
-//import CartData from "../Assets/cart.json";
 import ItemCart from "../Components/ItemCart";
 import { useDispatch, useSelector } from "react-redux";
 import { usePostCartMutation } from "../Services/shopServices";
-import { removeItem } from "../Features/Cart/cartSlice";
+import { removeItem, emptyCart } from "../Features/Cart/cartSlice";
 
 const Cart = () => {
   
@@ -13,17 +12,12 @@ const Cart = () => {
   
   const dispatch = useDispatch()
 
-  console.log("PASO POR CARRITO OTRA VEZ")
-  console.log(CartData);
-
   const onConfirm = () => {
     trigger({total, items: CartData, user, updatedAt})
-
+    dispatch(emptyCart())
   }
 
   const removeItemCB = (id) => {
-    console.log("Borrando")
-    console.log(id)
     dispatch(removeItem(id))
   }
 

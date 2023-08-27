@@ -17,21 +17,23 @@ import ProfileStack from "./ProfileStack";
 import TabBarMyProfileIcon from "../Components/TabBarMyProfileIcon";
 import { getSession } from "../SQL_lite/queries";
 import { setUser } from "../Features/User/userSlice";
+import { setUserLocalId } from "../Features/Cart/cartSlice";
 
 const Tab = createBottomTabNavigator();
 
 const Navigator = () => {
-  const { email } = useSelector((state) => state.userReducer.value);
+  const { email} = useSelector((state) => state.userReducer.value);
   const dispatch = useDispatch();
 
   useEffect(() => {
     (async () => {
       try {
-        console.log("NAVIGATOR SESSION");
+        console.log("GET SESSION")
         const res = await getSession();
-        console.log(res);
         if (res?.rows.length) {
-          const user = res.rows._array[0];
+          const user = res.rows[0];
+          console.log(user)
+          dispatch(setUserLocalId(user.localId))
           dispatch(setUser(user));
         }
       } catch (error) {

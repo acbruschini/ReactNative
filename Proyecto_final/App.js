@@ -6,7 +6,7 @@ import { useFonts } from "expo-font";
 import Store from "./src/Store/store";
 import { Provider } from "react-redux";
 import { useEffect } from "react";
-import { init, dropTableSessions, getSession } from "./src/SQL_lite/queries"
+import { init} from "./src/SQL_lite/queries"
 
 export default function App() {
 
@@ -17,12 +17,13 @@ export default function App() {
   useEffect(() => {
     (async () => {
       try {
-        res2 = await dropTableSessions()
-        res = await init();
+        //const res = await dropTableSessions()
+        const res = await init();
         console.log("DB inicializada");
-        console.log(res)
+        //console.log(res)
       } catch (error) {
-        console.log(error.message);
+        console.log("ERROR: ")
+        console.log(error);
       }
     })();
   }, []);

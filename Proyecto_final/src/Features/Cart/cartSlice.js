@@ -4,7 +4,7 @@ export const cartSlice = createSlice({
   name: "Cart",
   initialState: {
     value: {
-      user: "Usuario hardcodeado",
+      user: "",
       updatedAt: "",
       total: null,
       items: [],
@@ -39,19 +39,6 @@ export const cartSlice = createSlice({
       const productExists = state.value.items.some(
         (item) => item.id == action.payload
       );
-      // if (productExists) {
-      //   state.value.items = state.value.items.map((item) => {
-      //     if (item.id === action.payload) {
-      //       if (item.quantity == 1) {
-      //         //
-      //       } else {
-      //         item.quantity--;
-      //         return item
-      //       }
-      //     }
-      //     return item
-      //   });
-      // }
       if (productExists) {
         state.value.items = state.value.items.map((item) => {
           if (item.id != action.payload) {
@@ -66,8 +53,24 @@ export const cartSlice = createSlice({
       state.value.items = state.value.items.filter(item => item != undefined)
 
     },
+    setUserLocalId: (state, action) => {
+      console.log("PAYLOAD")
+      console.log(action.payload)
+      state.value.user = action.payload
+    },
+    emptyCart: (state, action) => {
+      state.value.items = []
+    },
+    cartLogOut: (state, action) => {
+      state.value = {
+        user: "",
+        updatedAt: "",
+        total: null,
+        items: [],
+      }
+    }
   },
 });
 
-export const { addItem, removeItem } = cartSlice.actions;
+export const { addItem, removeItem, setUserLocalId, emptyCart, cartLogOut } = cartSlice.actions;
 export default cartSlice.reducer;

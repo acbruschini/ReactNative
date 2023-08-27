@@ -7,6 +7,7 @@ import { isAtLeastSixCharacters, isValidEmail } from "../Validations/auth";
 import { useDispatch } from "react-redux";
 import { setUser } from "../Features/User/userSlice";
 import { insertSession } from "../SQL_lite/queries";
+import { setUserLocalId } from "../Features/Cart/cartSlice";
 
 
 const LoginScreen = ({ navigation }) => {
@@ -42,6 +43,7 @@ useEffect(() => {
         console.log("Session iniciada");
         console.log(resp);
         dispatch(setUser({email: result.data.email, idToken: result.data.idToken, localId: result.data.localId, profileImage: ""}))
+        dispatch(setUserLocalId(result.data.localId))
       }
     } catch (error) {
       console.log(error.message)
