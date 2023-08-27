@@ -6,9 +6,7 @@ import { useLoginMutation } from "../Services/authServices";
 import { isAtLeastSixCharacters, isValidEmail } from "../Validations/auth";
 import { useDispatch } from "react-redux";
 import { setUser } from "../Features/User/userSlice";
-import { useGetProfileImageQuery } from "../Services/shopServices";
 
-//import { colors } from '../Global/Colors'
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");

@@ -7,6 +7,7 @@ import Store from "./src/Store/store";
 import { Provider } from "react-redux";
 
 export default function App() {
+
   const [fontsLoaded] = useFonts({
     Clarendon: require("./src/Assets/clarendon.ttf"),
   });
