@@ -51,7 +51,6 @@ export const shopApi = createApi({
       query: (user) => `orders.json?orderBy="user"&equalTo="${user}"`,
       transformResponse: (response) => {
         const ordersTrans = Object.values(response);
-        console.log(ordersTrans);
         return ordersTrans;
       },
     }),

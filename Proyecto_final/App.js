@@ -1,12 +1,10 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet} from "react-native";
 import Navigator from "./src/Navigation/Navigator";
 import { useFonts } from "expo-font";
 import Store from "./src/Store/store";
 import { Provider } from "react-redux";
 import { useEffect } from "react";
-import { init} from "./src/SQL_lite/queries"
+import { dropTableSessions, init} from "./src/SQL_lite/queries"
 
 export default function App() {
 
@@ -17,10 +15,8 @@ export default function App() {
   useEffect(() => {
     (async () => {
       try {
-        //const res = await dropTableSessions()
+        //const res = await dropTableSessions();
         const res = await init();
-        console.log("DB inicializada");
-        //console.log(res)
       } catch (error) {
         console.log("ERROR: ")
         console.log(error);

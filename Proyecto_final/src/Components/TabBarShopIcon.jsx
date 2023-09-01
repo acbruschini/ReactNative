@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { View } from 'react-native'
 import { Entypo } from '@expo/vector-icons';
 import React from 'react'
 
@@ -11,5 +11,3 @@ const TabBarShopIcon = ({focused}) => {
 }
 
 export default TabBarShopIcon
-
-const styles = StyleSheet.create({})

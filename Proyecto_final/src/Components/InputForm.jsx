@@ -1,6 +1,5 @@
 import { StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
-//import { colors } from '../Global/Colors';
 
 const InputForm = ({
     label, 
@@ -45,13 +44,10 @@ const styles = StyleSheet.create({
     subtitle: {
         width: '90%',
         fontSize: 16,
-        //fontFamily: 'Josefin'
     },
     error: {
         fontSize: 16,
         color: 'red',
-        //fontFamily: 'Josefin',
-        //fontStyle: 'italic',
     },
     input: {
         width: '90%',
@@ -59,7 +55,6 @@ const styles = StyleSheet.create({
         borderBottomWidth: 3,
         borderBottomColor: "red",
         padding: 2,
-        //fontFamily: 'Josefin',
         fontSize: 14,
     }
 })

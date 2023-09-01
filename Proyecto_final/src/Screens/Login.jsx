@@ -9,7 +9,6 @@ import { setUser } from "../Features/User/userSlice";
 import { insertSession } from "../SQL_lite/queries";
 import { setUserLocalId } from "../Features/Cart/cartSlice";
 
-
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,7 +40,6 @@ useEffect(() => {
       if(result.isSuccess) {
         const resp = await insertSession({email: result.data.email, idToken: result.data.idToken, localId: result.data.localId})
         console.log("Session iniciada");
-        console.log(resp);
         dispatch(setUser({email: result.data.email, idToken: result.data.idToken, localId: result.data.localId, profileImage: ""}))
         dispatch(setUserLocalId(result.data.localId))
       }
@@ -102,7 +100,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    //fontFamily: 'Josefin'
   },
   sub: {
     fontSize: 14,

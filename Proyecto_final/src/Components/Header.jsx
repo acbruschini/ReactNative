@@ -14,7 +14,6 @@ const Header = ({ navigation, title }) => {
   const onLogOut = async () => {
     try {
       const res = await deleteSession(localId)
-      console.log(res)
       dispatch(logOut())
       dispatch(cartLogOut())
     } catch (error) {
@@ -61,7 +60,6 @@ const styles = StyleSheet.create({
   brand: {
     alignItems: "center",
     flexDirection: "row",
-    //backgroundColor: "red",
   },
   iso: {
     height: 30,

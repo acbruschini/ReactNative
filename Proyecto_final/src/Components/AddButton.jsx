@@ -1,6 +1,5 @@
 import { Pressable, StyleSheet, Text } from "react-native";
 import React from "react";
-//import { colors } from "../Global/Colors";
 
 const AddButton = ({
     title = "",
@@ -29,7 +28,6 @@ const styles = StyleSheet.create({
         padding: 8
     },
     text: {
-        //fontFamily: "Ubuntu",
         fontSize: 18,
         color: "black",
     },

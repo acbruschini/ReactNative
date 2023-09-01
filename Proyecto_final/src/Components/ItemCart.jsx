@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View, Pressable } from "react-native";
 import React from "react";
-//import { colors } from "../Global/Colors";
 import { Entypo } from "@expo/vector-icons";
 
 const ItemCart = ({ itemCart, removeItem} ) => {
@@ -42,13 +41,9 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
   text: {
-    //fontFamily: "Josefin",
     fontSize: 19,
-    //color: colors.red,
   },
   text2: {
-    //fontFamily: "Josefin",
     fontSize: 14,
-    //color: colors.peach,
   },
 });

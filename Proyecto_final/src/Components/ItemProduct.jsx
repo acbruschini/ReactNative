@@ -1,7 +1,7 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import React from "react";
 import Card from "./Card";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setIdSelected } from "../Features/Shop/shopSlice";
 
 const ItemProduct = ({ navigation, product }) => {
@@ -25,5 +25,3 @@ const ItemProduct = ({ navigation, product }) => {
 };
 
 export default ItemProduct;
-
-const styles = StyleSheet.create({});

@@ -1,5 +1,5 @@
 import { Image, StyleSheet, View } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import AddButton from "../Components/AddButton";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetProfileImageQuery } from "../Services/shopServices";
@@ -10,21 +10,7 @@ const Profile = ({navigation}) => {
     const {localId, profileImage, idToken, email} = useSelector(state => state.userReducer.value)
     const estado = useSelector(state => state.userReducer.value)
 
-    console.log("ESTADO TOTAL USERrEDUCER =>")
-    console.log(estado);
-    
-
-    console.log("localId =>")
-    console.log(localId)
-
-    console.log("profileImage =>")
-    console.log(profileImage);
-
     const {data: image} = useGetProfileImageQuery(localId)
-
-    console.log("IMAGE EN PROFILE.JSX =>")
-    console.log(image);
-
 
     const cameraImage = image?.image
 

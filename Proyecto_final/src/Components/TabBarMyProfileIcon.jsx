@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { View } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react'
 
@@ -11,5 +11,3 @@ const TabBarMyProfileIcon = ({focused}) => {
 }
 
 export default TabBarMyProfileIcon
-
-const styles = StyleSheet.create({})

@@ -1,13 +1,11 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React, { useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ShopStack from "./ShopStack";
 import CartStack from "./CartStack";
 import OrdersStack from "./OrdersStack";
 import { generalContentPadding } from "../Global/dimensions";
-import { Colors } from "../Global/colors";
 import TabBarShopIcon from "../Components/TabBarShopIcon";
 import TabBarCartIcon from "../Components/TabBarCartIcon";
 import TabBarOrdersIcon from "../Components/TabBarOrdersIcon";
@@ -28,11 +26,15 @@ const Navigator = () => {
   useEffect(() => {
     (async () => {
       try {
-        console.log("GET SESSION")
+        // UNCOMMENT THESE LOGS TO SEE WHATS HAPPENING WITH SQLITE
+        //console.log("GET SESSION")
         const res = await getSession();
+        console.log(res)
         if (res?.rows.length) {
-          const user = res.rows[0];
-          console.log(user)
+          //const user = res.rows._array[0]; // FOR ANDROID STUDIO
+          const user = res.rows[0]; // FOR ANDROID WEB
+          //console.log("USER")
+          //console.log(user)
           dispatch(setUserLocalId(user.localId))
           dispatch(setUser(user));
         }
@@ -44,6 +46,7 @@ const Navigator = () => {
 
   return (
     <View style={styles.container}>
+      {/* SAFE AREA VIEW NOT WORKING IN WEB */}
       {/* <SafeAreaView style={styles.container}> */}
       <NavigationContainer>
         {email ? (

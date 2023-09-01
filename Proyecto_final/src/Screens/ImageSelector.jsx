@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Image, View, StyleSheet, Text } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import AddButton from "../Components/AddButton";
-//import { colors } from "../Global/Colors";
 import * as MediaLibrary from "expo-media-library";
 import { usePostProfileImageMutation } from "../Services/shopServices";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,8 +34,6 @@ const ImageSelector = ({ navigation }) => {
                 quality: 1,
             });
 
-            console.log(result.assets);
-
             if (!result.canceled) {
                 setImage(result.assets[0].uri);
             }
@@ -45,16 +42,13 @@ const ImageSelector = ({ navigation }) => {
 
     const confirmImage = async () => {
         try {
-            const { status } = await MediaLibrary.requestPermissionsAsync(); //EN WEB NO ANDA
+            const { status } = await MediaLibrary.requestPermissionsAsync(); // NOT WORKING IN WEB
             if (status == "granted") {
-                //console.log("Only valid on emulators and physical devices");
                 const response = await MediaLibrary.createAssetAsync(image);
                 trigger({
                     image: response.uri,
                     localId: localId,
                 });
-                console.log("RESPONSE.URI =>")
-                console.log(response.uri);
                 dispatch(saveImage(response.uri));
             }
         } catch (error) {

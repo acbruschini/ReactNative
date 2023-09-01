@@ -1,4 +1,4 @@
-import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
+import { FlatList, Pressable, Text, View } from "react-native";
 import React from "react";
 import ItemCart from "../Components/ItemCart";
 import { useDispatch, useSelector } from "react-redux";
@@ -37,5 +37,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
-const styles = StyleSheet.create({});

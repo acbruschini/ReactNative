@@ -16,7 +16,6 @@ export const cartSlice = createSlice({
         (item) => item.id == action.payload.id
       );
       if (productExists) {
-        //recorro el array y cuando matchea el id suma uno a cantidad
         state.value.items = state.value.items.map((item) => {
           if (item.id === action.payload.id) {
             item.quantity += action.payload.quantity;
@@ -49,7 +48,7 @@ export const cartSlice = createSlice({
           }
         });
       }
-
+      // I HAVE TO FILTER CAUSE IF QUANTITY IS 1 I SUBSTRACT 1 AND RETURN UNDEFINED TO BE REMOVED LATER
       state.value.items = state.value.items.filter(item => item != undefined)
 
     },

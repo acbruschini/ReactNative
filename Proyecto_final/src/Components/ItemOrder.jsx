@@ -4,8 +4,7 @@ import React from "react";
 import Card from "./Card";
 
 const ItemOrder = ({ order }) => {
-  console.log(order);
-  //const total = order.items.reduce((acc, item) => acc += item.price + item.quantity, 0)
+
   return (
     <View style={styles.card} onPress={() => {}}>
       <View style={styles.textContainer}>

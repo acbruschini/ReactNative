@@ -1,5 +1,4 @@
 import { Button, Image, StyleSheet, Text, View } from "react-native";
-import { useEffect, useState } from "react";
 import { generalContentPadding } from "../Global/dimensions";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../Features/Cart/cartSlice";
@@ -22,7 +21,6 @@ const ItemDetail = () => {
 
   return (
     <View style={styles.container}>
-      {console.log(idSelected)}
       <Image
         source={{ uri: product.images[0] }}
         resizeMode="cover"
